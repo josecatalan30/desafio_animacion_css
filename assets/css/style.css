@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(248, 254, 251);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "header"
+    "menu"
+    "banner"
+    "gallery"
+    "botones"
+    "footer";
+}
+header{
+    grid-area: header;
+    background-color: rgb(66, 128, 81);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+header > nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    gap: 10px;
+}
+.menu > ul{
+    grid-area: menu;
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+li > a{
+    text-decoration: none;
+    color: inherit;
+}
+a:hover{
+    color: rgb(217, 236, 113);
+}
+#logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: start;
+}
+#logo> img{
+    width: 40px;
+    border-radius: 50%;
+}
+main{
+    padding-top: 100px;
+}
+.banner{
+    grid-area: banner;
+    background-color: rgb(160, 198, 165);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    animation: cambioColor 6s infinite;
+}
+@keyframes cambioColor{
+    0%{
+        background-color: rgb(160, 198, 165);
+    }
+    50%{
+        background-color: rgb(217, 236, 113);
+    }
+    100%{
+        background-color: rgb(170, 219, 231);
+    }
+}
+.categories{
+    display: none;
+}
+.gallery{
+    grid-area: gallery;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+}
+.picture{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.picture > h4{
+    font-size: 20px;
+    color: rgb(66, 128, 81);
+}
+img{
+    width: 250px;
+    transition: all 1s;
+    border-radius: 10px;
+    filter: grayscale(100%);
+}
+img:hover{
+    filter: grayscale(0%);
+    scale: 1.05;
+}
+.picture > p{
+    border-top: 1px solid rgb(66, 128, 81);
+    display: block;
+    text-align: center;
+    width: 80%;
+    font-size: 15px;
+    color: black;
+}
+.picture > p > strong{
+    color:rgb(66, 128, 81);
+}
+.picture > button{
+    background-color: rgb(66, 128, 81);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+footer{
+    grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(66, 128, 81);
+    color: white;
+    padding: 10px;
+}
+.rrss > a:hover{
+    color: rgb(217, 236, 113);
+}
+
+
+@media (min-width: 576px){
+    body {
+        grid-template-columns: 1fr 5fr;
+        grid-template-areas:
+            "header banner"
+            "categories gallery"
+            "footer footer";
+    }
+    header {
+        position: static;
+        width: auto;
+        height: auto;
+        grid-area: header;
+        flex-direction: column;
+    }
+    main {
+        padding-top: 0;
+    }
+    .menu {
+        display: none;
+    }
+    .categories {
+        grid-area: categories;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        gap: 20px;
+    }
+    .categories > h2{
+        color: rgb(161, 224, 36);
+    }
+    .categories > ul{
+        list-style: none;
+    }
+    .banner {
+        grid-area: banner;
+        margin-top: 0;
+        padding: 20px;
+    }
+    .gallery {
+        grid-area: gallery;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .picture{
+        width: 100%;
+        height: 500px;
+    }
+    footer {
+        grid-area: footer;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .gallery {
+        grid-area: gallery;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
